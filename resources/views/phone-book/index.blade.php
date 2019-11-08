@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th scope="col">#</th>
+        <th scope="col">Фото</th>
         <th scope="col">Имя</th>
         <th scope="col">Фамилия</th>
         <th scope="col">Телефон</th>
@@ -11,13 +12,14 @@
     </thead>
     <tbody>
     @foreach($items as $item)
-        <tr class="contact-row">
-            <th scope="row">{{$loop->iteration}}</th>
-            <td>{{$item->name??''}}</td>
-            <td>{{$item->surname??''}}</td>
-            <td>{{$item->phone??''}}</td>
-            <td>{{$item->email??''}}</td>
-            <td>
+        <tr>
+            <th  class="align-middle">{!! GetImageAdmin($item->images()->first()->path??'',asset('default.png')) !!}</th>
+            <th class="align-middle" scope="row">{{$loop->iteration}}</th>
+            <td class="align-middle">{{$item->name??''}}</td>
+            <td class="align-middle">{{$item->surname??''}}</td>
+            <td class="align-middle">{{$item->phone??''}}</td>
+            <td class="align-middle">{{$item->email??''}}</td>
+            <td class="align-middle">
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">

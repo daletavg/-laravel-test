@@ -17,3 +17,4 @@ Route::get('/',function ()
 });
 Route::resource('/phone-book', 'IndexController',['except'=>['show']]);
 
+Route::post('/phone-book/deleteImage', 'IndexController@deleteImage')->name('phone_book.deleteImage');

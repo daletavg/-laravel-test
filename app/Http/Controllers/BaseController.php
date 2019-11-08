@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use mysql_xdevapi\Session;
 
 abstract class BaseController extends Controller
@@ -42,9 +43,13 @@ abstract class BaseController extends Controller
         $this->data['sections'] = $sections;
     }
 
-    protected function setSuccess(string $title)
+    protected function setSuccess(string $title, $props = null)
     {
-       return response(['msg'=>$title],200);
+        $responseData = ['msg'=>$title];
+        if(!is_null($props)) {
+            $responseData+=$props;
+        }
+       return response($responseData,200);
     }
 
     protected function setError($title)
